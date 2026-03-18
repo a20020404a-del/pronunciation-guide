@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 アメリカ英語 発音完全攻略ガイド</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+JP:wght@300;400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --card-bg: #FFFFFF;
+      --primary: #FF6B35;
+      --secondary: #4ECDC4;
+      --accent: #FFD93D;
+      --dark: #1A2342;
+      --success: #06D6A0;
+      --error: #EF233C;
+      --purple: #9B5DE5;
+      --blue: #0096C7;
+      --pink: #F72585;
+      --text: #2D3748;
+      --text-light: #718096;
+      --border: #E2E8F0;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #1A2342 0%, #2D3A6B 40%, #4A1A7A 100%);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(255,107,53,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(78,205,196,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 80%, rgba(155,93,229,0.15) 0%, transparent 50%);
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      from { transform: scale(1) rotate(0deg); }
+      to   { transform: scale(1.1) rotate(5deg); }
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--dark);
+      font-family: 'Fredoka One', cursive;
+      font-size: 13px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      animation: badgePop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+
+    @keyframes badgePop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      animation: slideUp 0.7s ease 0.2s both;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-weight: 300;
+      animation: slideUp 0.7s ease 0.3s both;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      animation: slideUp 0.7s ease 0.5s both;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      color: white;
+    }
+
+    .stat-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== NAV TABS ===== */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--dark);
+      padding: 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-tabs {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    .nav-tab {
+      flex: none;
+      padding: 16px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.25s;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .nav-tab:hover { color: rgba(255,255,255,0.8); }
+
+    .nav-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    /* ===== SOUND CARDS ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .sound-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sound-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--card-accent, var(--primary));
+    }
+
+    .sound-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .card-sound {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: var(--card-accent, var(--primary));
+    }
+
+    .difficulty {
+      display: flex;
+      gap: 3px;
+    }
+
+    .star {
+      font-size: 14px;
+      color: #D1D5DB;
+    }
+
+    .star.filled { color: var(--accent); }
+
+    .card-title {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .mouth-diagram {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      white-space: pre;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .card-examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .example-pair {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .word-bubble {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .word-wrong {
+      background: #FEE2E2;
+      color: var(--error);
+      text-decoration: line-through;
+    }
+
+    .word-right {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .vs-arrow {
+      font-size: 0.7rem;
+      color: var(--text-light);
+    }
+
+    .mnemonic {
+      background: linear-gradient(135deg, #FFF9DB, #FFF3B0);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.82rem;
+      border-left: 4px solid var(--accent);
+      color: #92400E;
+    }
+
+    .mnemonic strong { display: block; font-size: 0.75rem; color: #78350F; margin-bottom: 3px; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .badge-hard { background: #FEE2E2; color: var(--error); }
+    .badge-tip  { background: #D1FAE5; color: #065F46; }
+    .badge-new  { background: #DBEAFE; color: #1E40AF; }
+
+    /* ===== TIPS SECTION ===== */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .tip-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .tip-card:hover { transform: translateY(-4px); }
+
+    .tip-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .tip-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      min-width: 26px;
+      height: 26px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .diagram-box {
+      background: #0F172A;
+      color: #E2E8F0;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      margin: 14px 0;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    /* ===== PRACTICE SECTION ===== */
+    .practice-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .practice-tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      border: 2px solid var(--border);
+      color: var(--text-light);
+      background: white;
+    }
+
+    .practice-tab.active {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .practice-content { display: none; }
+    .practice-content.active { display: block; }
+
+    .twister-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary);
+      transition: transform 0.3s;
+    }
+
+    .twister-card:hover { transform: translateX(6px); }
+
+    .twister-en {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--dark);
+      font-weight: 700;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .twister-jp {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .twister-focus {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    .focus-tag {
+      background: #EDE9FE;
+      color: var(--purple);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .speed-btn {
+      padding: 8px 20px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .speed-btn:hover { background: #3AB5AC; transform: scale(1.05); }
+
+    /* Minimal Pairs */
+    .pairs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .pair-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .pair-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .pair-words {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .pair-word {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .pair-word-a { color: var(--primary); }
+    .pair-word-b { color: var(--blue); }
+
+    .pair-vs {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .pair-phonetic {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .pair-tip {
+      font-size: 0.78rem;
+      color: var(--dark);
+      background: #F0FDF4;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: left;
+    }
+
+    /* ===== RHYTHM SECTION ===== */
+    .rhythm-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .rhythm-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rhythm-visual {
+      background: #0F172A;
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Space Mono', monospace;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+
+    .stress-text {
+      font-size: 0.9rem;
+      line-height: 2;
+    }
+
+    .syllable {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin: 0 2px;
+    }
+
+    .stress-strong {
+      background: var(--accent);
+      color: var(--dark);
+      font-size: 1.1em;
+      font-weight: 900;
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+
+    .stress-weak {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85em;
+    }
+
+    .intonation-chart {
+      position: relative;
+      height: 80px;
+      background: #0F172A;
+      border-radius: 10px;
+      margin: 16px 0;
+      padding: 10px 20px;
+      overflow: hidden;
+    }
+
+    .intonation-line {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+    }
+
+    .intonation-text {
+      position: absolute;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: white;
+    }
+
+    /* ===== WORD LIST SECTION ===== */
+    .word-table-wrapper {
+      overflow-x: auto;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    thead { background: var(--dark); }
+    thead th {
+      color: white;
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover { background: #F8FAFC; }
+
+    tbody td {
+      padding: 14px 18px;
+      font-size: 0.875rem;
+    }
+
+    .word-en {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .phonetic {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--purple);
+    }
+
+    .wrong-example {
+      color: var(--error);
+      font-size: 0.8rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .category-chip {
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* ===== PROGRESS FOOTER ===== */
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      height: 6px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    /* ===== CALLOUT BOXES ===== */
+    .callout {
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .callout-warn { background: #FEF3C7; border-left: 4px solid #F59E0B; }
+    .callout-info { background: #DBEAFE; border-left: 4px solid #3B82F6; }
+    .callout-success { background: #D1FAE5; border-left: 4px solid var(--success); }
+
+    .callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-text { font-size: 0.85rem; line-height: 1.7; }
+    .callout-text strong { display: block; margin-bottom: 4px; font-size: 0.9rem; }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--dark);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 200;
+    }
+
+    .scroll-top.visible { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px); background: var(--primary); }
+
+    /* ===== RESPONSIVENESS ===== */
+    @media (max-width: 600px) {
+      .hero { padding: 40px 16px 60px; }
+      .container { padding: 28px 16px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .pairs-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.5s ease both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-toggle-content {
+      display: none;
+    }
+
+    .sound-card.expanded .card-toggle-content {
+      display: block;
+    }
+
+    .expand-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 8px;
+      border-radius: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-light);
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.2s;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .expand-btn:hover { background: var(--border); color: var(--dark); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🇺🇸 American English</div>
+    <h1>発音 <span>完全攻略</span><br>ガイド</h1>
+    <p>日本人が苦手な音から攻略！楽しく・わかりやすく・確実に上達</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">10</span><span class="stat-label">難発音</span></div>
+      <div class="stat"><span class="stat-num">20+</span><span class="stat-label">練習フレーズ</span></div>
+      <div class="stat"><span class="stat-num">60+</span><span class="stat-label">例文・単語</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showSection('sounds', this)">🔊 苦手な音 TOP10</div>
+    <div class="nav-tab" onclick="showSection('tips', this)">👄 発音コツ</div>
+    <div class="nav-tab" onclick="showSection('practice', this)">🏋️ 練習コーナー</div>
+    <div class="nav-tab" onclick="showSection('rhythm', this)">🎵 リズム・イントネーション</div>
+    <div class="nav-tab" onclick="showSection('words', this)">📖 間違えやすい単語</div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: SOUNDS ===== -->
+<div id="section-sounds" class="section active">
+  <div class="container">
+    <div class="section-title">🔊 日本人が最も苦手な音 TOP10</div>
+    <p class="section-sub">各カードをクリックすると詳細な発音のコツが見られます</p>
+
+    <div class="cards-grid">
+
+      <!-- L vs R -->
+      <div class="sound-card fade-in" style="--card-accent: #FF6B35;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">L / R</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+          </div>
+        </div>
+        <div class="card-title">L と R の区別 <span class="badge badge-hard">最難関</span></div>
+        <div class="card-desc">日本人が最も苦手な音。間違えると意味が完全に変わってしまう危険な音です。</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">right ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">light</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">rice ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">lice</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【L の発音】
+  上の歯茎に 舌先タッチ！
+  ┌─────────────────┐
+  │  ─── 上の歯　───  │
+  │    △ ← 舌先を     │
+  │       歯茎に当てる │
+  │  ─── 下の歯　───  │
+  └─────────────────┘
+  空気は舌の 両サイドから
+
+【R の発音】
+  舌を宙に浮かせてカール↩
+  ┌─────────────────┐
+  │  どこにも触れない  │
+  │     (    )        │
+  │   ↩ 舌を後ろへ    │
+  │     カールさせる   │
+  └─────────────────┘
+  唇を少し丸める 👄</div>
+          <div class="callout callout-warn">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-text"><strong>よくある間違い</strong>「rice」を「lice（シラミ）」と発音してしまう。レストランで要注意！</div>
+          </div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>L = Landing（着陸）→ 舌が着陸する<br>R = Rocket（ロケット）→ 舌が引っ込む</div>
+        </div>
+      </div>
+
+      <!-- V vs B -->
+      <div class="sound-card fade-in" style="--card-accent: #F72585;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">V / B</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">V と B の区別 <span class="badge badge-hard">要注意</span></div>
+        <div class="card-desc">日本語にはVの音がないため、VをBで代替してしまうクセが原因。</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">very ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">berry</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">vest ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">best</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【V の発音】
+  上の前歯を 下唇に軽くタッチ
+  ┌─────────────────┐
+  │   ─── 上の歯  ─  │
+  │         ↓         │
+  │   ≈≈≈ 下唇 ≈≈≈   │← 歯を当てて摩擦
+  │                   │
+  └─────────────────┘
+  「ヴー」と震わせる
+
+【B の発音】
+  両唇をピタッと閉じて 破裂！
+  ┌─────────────────┐
+  │   ─── 上唇 ───   │
+  │   ────────────   │ ← 唇を閉じる
+  │   ─── 下唇 ───   │
+  └─────────────────┘
+  「ブ！」と一瞬だけ</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>V = Vampire（ヴァンパイア）→ 歯を下唇に当ててヴー<br>B = Bubble（バブル）→ 唇を閉じてパッ！</div>
+        </div>
+      </div>
+
+      <!-- TH -->
+      <div class="sound-card fade-in" style="--card-accent: #9B5DE5;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">TH</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">TH の2種類 <span class="badge badge-new">2パターン</span></div>
+        <div class="card-desc">「th」には有声音（ザ行）と無声音（サ行）の2種類がある。どちらも舌を歯の間に！</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">this ✓</span>
+            <span class="vs-arrow">有声</span>
+            <span class="word-bubble word-right">that ✓</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">think ✓</span>
+            <span class="vs-arrow">無声</span>
+            <span class="word-bubble word-right">thank ✓</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【TH の発音方法】
+  歯の間に舌を挟む！
+  ┌─────────────────┐
+  │  ─── 上の歯 ─── │
+  │      ≡≡≡≡≡≡     │ ← 舌先を少しだけ
+  │      ─────      │   歯の間からのぞかせる
+  │  ─── 下の歯 ─── │
+  └─────────────────┘
+  有声(this)：ズー と震わせる
+  無声(think)：スー と息だけ</div>
+          <div class="callout callout-info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-text"><strong>有声 vs 無声の見分け方</strong>「the, this, that, there」→ 有声（ザ行っぽい音）<br>「think, thank, three, through」→ 無声（サ行っぽい音）</div>
+          </div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>舌を「噛む」→ TH！最初は大げさに舌を出すくらいでOK</div>
+        </div>
+      </div>
+
+      <!-- F vs H -->
+      <div class="sound-card fade-in" style="--card-accent: #4ECDC4;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">F / H</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">F と H の区別</div>
+        <div class="card-desc">FはVの無声版。上の歯を下唇に当てて。HはHの無声版。日本語のハ行より強い息。</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">fan ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">han</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">fine ✓</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-wrong">hine</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【F の発音】
+  上の歯 → 下唇に当てて「フー」
+  ┌─────────────────┐
+  │   ─── 上の歯 ─  │
+  │        ↓          │
+  │   ≈≈≈ 下唇 ≈≈≈   │← 歯を当てて摩擦
+  └─────────────────┘
+
+【H の発音】
+  口を少し開けて 強く息を吐く
+  ┌─────────────────┐
+  │    (   口   )     │← 少し開く
+  │    ↑ 息だけ ↑    │
+  └─────────────────┘</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>F = Fork（フォーク）→ 歯を下唇に当てる<br>H = Hot（ホット）→ 蒸気が出る感じで「ハ〜」</div>
+        </div>
+      </div>
+
+      <!-- W -->
+      <div class="sound-card fade-in" style="--card-accent: #0096C7;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">W</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">W の発音（ウ → 移動）</div>
+        <div class="card-desc">日本語の「ワ」ではなく、唇を「ウ」の形にしてから目的の音へ動かす。</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">water</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">work</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">world</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【W の発音】
+  唇を丸めて「ウー」→ すぐ動かす
+  ┌─────────────────┐
+  │   👄→(ウ形)→ wa  │
+  │                   │
+  │  ①唇を丸める     │
+  │  ② 素早く次の    │
+  │     母音へ移動    │
+  └─────────────────┘
+  water = 「ウォーター」ではなく
+          「wɑːtər」唇の動きが命！</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>「ウ」と言いかけてやめる感じ！「ウォーター」より唇の動きを意識して</div>
+        </div>
+      </div>
+
+      <!-- 語末子音 -->
+      <div class="sound-card fade-in" style="--card-accent: #06D6A0;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">末尾子音</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">語末の子音 <span class="badge badge-hard">脱落注意</span></div>
+        <div class="card-desc">日本語は母音で終わる言語。英語の語末子音を省略すると全く伝わらない！</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">cat /t/</span>
+            <span class="vs-arrow">✗</span>
+            <span class="word-bubble word-wrong">ca</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">bed /d/</span>
+            <span class="vs-arrow">✗</span>
+            <span class="word-bubble word-wrong">be</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【語末子音のコツ】
+  「ト」「ド」などを言わず
+  口の形だけ作って止める！
+
+  cat = キャッ[t口形]
+       ↑「ト」とは言わない
+       ↑口を閉じる形で終わる
+
+  dog = ドッ[g口形]
+  bed = ベッ[d口形]
+  book = ブッ[k口形]</div>
+          <div class="callout callout-success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-text"><strong>コツ</strong>語末子音は「言う」ではなく「形を作る」！小さく聞こえてもOK。むしろ余計な母音（cat → キャット「ゥ」）を加えないことが大事。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 短母音 -->
+      <div class="sound-card fade-in" style="--card-accent: #FF6B35;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">短母音</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+          </div>
+        </div>
+        <div class="card-title">cat / cut / cot の区別 <span class="badge badge-hard">超重要</span></div>
+        <div class="card-desc">3つとも「カット」に聞こえてしまう日本人が多数。完全に別の単語！</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">cat /æ/</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">cut /ʌ/</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">cot /ɑ/</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">cat /æ/ ← 口を横に広げて低く「ア」
+  ┌───────────────┐
+  │  ←←← 横広げる→→→ │ = 「エア」みたいな感じ
+  └───────────────┘
+
+cut /ʌ/ ← お腹から短く「ア」
+  ┌───────────────┐
+  │    (  ア  )    │ = 力を抜いた「ア」
+  └───────────────┘
+
+cot /ɑ/ ← 口を縦に大きく開けて「ア」
+  ┌───────────────┐
+  │       〇       │ = 歯医者さんの「あーん」
+  └───────────────┘</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>æ（cat）=「エ」と「ア」の中間<br>ʌ（cut）= 力を抜いた普通の「ア」<br>ɑ（cot）= 大きく口を開けた「アー」</div>
+        </div>
+      </div>
+
+      <!-- æ -->
+      <div class="sound-card fade-in" style="--card-accent: #FFD93D;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">æ</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">æ（アッシュ）の音 <span class="badge badge-hard">要練習</span></div>
+        <div class="card-desc">「cat, bad, man, black, back」に使われる特殊な母音。口を横に引いて低く！</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">cat</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">bad</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">man</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">black</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【æ の発音】
+  口を横に引きながら 低く「ア」
+  ┌─────────────────┐
+  │ ←← 横に引く →→  │
+  │  ──────────────  │ ← 口は横長
+  │  「エ」と「ア」の │
+  │  中間くらいの高さ  │
+  └─────────────────┘
+  例：bad を「バッド」でなく
+      「ベァッド」に近い感じ</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>「ア」と言いながら口を「イ」の形に引いていく→ その中間が「æ」！</div>
+        </div>
+      </div>
+
+      <!-- Schwa -->
+      <div class="sound-card fade-in" style="--card-accent: #3AB5AC;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">ə</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">シュワー音 ə <span class="badge badge-new">超頻出</span></div>
+        <div class="card-desc">英語で最も多く使われる母音！力を抜いた「ア」に近い音。弱音節に多用される。</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">a·bout</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">ba·na·na</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">the</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【ə（シュワー）】
+  力を完全に抜いた「ア」
+  ┌─────────────────┐
+  │   😌 リラックス  │
+  │   口を半開きで   │
+  │   「ア」と「ウ」  │
+  │   の中間くらい   │
+  └─────────────────┘
+  about = ə-BOUT
+  banana = bə-NA-nə
+  ← 弱い音節はシュワーになる</div>
+          <div class="callout callout-info">
+            <span class="callout-icon">💡</span>
+            <div class="callout-text"><strong>シュワーがナチュラルな英語への近道！</strong>全部の音をはっきり言おうとすると不自然になる。弱音節はゆるく「ə」にすることで自然な英語に聞こえる。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Si/Shi -->
+      <div class="sound-card fade-in" style="--card-accent: #EF233C;" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-sound">si / shi</div>
+          <div class="difficulty">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">si と shi の区別</div>
+        <div class="card-desc">日本語では「si = shi（シ）」。英語では全く別の音！「see」と「she」は違う！</div>
+        <div class="card-examples">
+          <div class="example-pair">
+            <span class="word-bubble word-right">see /siː/</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-right">she /ʃiː/</span>
+          </div>
+          <div class="example-pair">
+            <span class="word-bubble word-right">seat</span>
+            <span class="vs-arrow">vs</span>
+            <span class="word-bubble word-right">sheet</span>
+          </div>
+        </div>
+        <button class="expand-btn">▼ 詳しく見る</button>
+        <div class="card-toggle-content">
+          <div class="mouth-diagram">【si /s/ の発音】
+  口を横に引いて 歯を近づけ「スィー」
+  ┌─────────────────┐
+  │ ←───────────→  │← 横に引く
+  │  ─── 歯 ───    │← 歯を近づける
+  │   シューッ（鋭い） │
+  └─────────────────┘
+
+【shi /ʃ/ の発音】
+  唇を少し前に出して「シー」
+  ┌─────────────────┐
+  │   (  唇を前に  )  │← 丸める
+  │   シー（丸みがある）│
+  └─────────────────┘</div>
+          <div class="mnemonic"><strong>💡 覚え方</strong>/s/ = 歯を近づけてスィー（鋭い音）<br>/ʃ/ = 唇を丸めてシー（柔らかい音）</div>
+        </div>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+</div>
+
+<!-- ===== SECTION 2: TIPS ===== -->
+<div id="section-tips" class="section">
+  <div class="container">
+    <div class="section-title">👄 発音を劇的に改善するコツ</div>
+    <p class="section-sub">口の動かし方・舌の位置・呼吸法を徹底解説</p>
+
+    <div class="tips-grid">
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">🦷</span>
+        <div class="tip-title">口の基本ポジション</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">英語を話すときの「基本の顔」を覚えよう</p>
+        <div class="diagram-box">英語モードの口の形
+┌─────────────────────┐
+│  👄 少し口角を上げる  │
+│                       │
+│  ・歯は少し離す       │
+│  ・下顎をやや前に     │
+│  ・舌は口の底に       │
+│  ・唇は柔らかく       │
+└─────────────────────┘
+日本語より「大きく動かす」
+が英語の基本！</div>
+        <ul class="step-list">
+          <li>口を大きく動かすことを意識する</li>
+          <li>日本語の半分くらいの力で話す（力を抜く）</li>
+          <li>音と音をつなげる（リンキング）を練習する</li>
+        </ul>
+      </div>
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">👅</span>
+        <div class="tip-title">舌の位置マスター</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">音によって舌の位置は全然違う！</p>
+        <div class="diagram-box">舌の位置まとめ
+    [上の歯茎]  ← L, D, T, N
+         △
+    [歯と歯の間] ← TH
+        ≡≡≡
+    [宙に浮く]  ← R
+        ( )
+    [口の底]    ← 母音全般
+        ___</div>
+        <div class="callout callout-warn" style="margin-top:12px;">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-text">日本語の「ラ行」は舌先が歯の裏に当たる→英語のRは舌を宙に浮かせる！全然違う！</div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">💨</span>
+        <div class="tip-title">有気音と無気音</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">英語のP/T/Kは息を強く出す「有気音」！</p>
+        <div class="diagram-box">紙を使ったテスト
+┌─────────────────────┐
+│   📄 ← 口の前に紙   │
+│                       │
+│  P: 紙が揺れる → OK  │
+│  T: 紙が揺れる → OK  │
+│  K: 紙が揺れる → OK  │
+│                       │
+│  揺れない → 練習必要！│
+└─────────────────────┘</div>
+        <ul class="step-list">
+          <li>「pen」= 強い息と共に「ペン」</li>
+          <li>「top」= 「ト」で息がドバッと出る</li>
+          <li>「key」= 「ク」と息を強く吐く</li>
+        </ul>
+      </div>
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">🔗</span>
+        <div class="tip-title">リンキング（音のつながり）</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">単語と単語をつなげると自然な英語に！</p>
+        <div class="diagram-box">音のつながりパターン
+
+①子音 + 母音でつながる
+  "an apple" → "ə-NÆPP-əl"
+  "pick it up" → "pi-ki-TUP"
+
+②同じ子音は1回だけ
+  "hot tea" → "HO-tea"（tが1つ）
+
+③語末のtが消えることも
+  "want to" → "wanna"
+  "going to" → "gonna"</div>
+        <div class="callout callout-success" style="margin-top:12px;">
+          <span class="callout-icon">✅</span>
+          <div class="callout-text">リンキングを意識するだけでネイティブっぽく聞こえる！</div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">🎯</span>
+        <div class="tip-title">毎日5分の練習法</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">効果的な練習順序と方法</p>
+        <ul class="step-list">
+          <li><strong>ウォームアップ（1分）</strong>口を大きく開けてあくびをする。舌を大きく回す。</li>
+          <li><strong>苦手音の単独練習（1分）</strong>今日の1音だけ集中（例：Rだけ）</li>
+          <li><strong>ミニマルペア練習（1分）</strong>light / right などの対を交互に</li>
+          <li><strong>シャドーイング（2分）</strong>アメリカのドラマや映画を真似る</li>
+        </ul>
+      </div>
+
+      <div class="tip-card fade-in">
+        <span class="tip-icon">🪞</span>
+        <div class="tip-title">鏡練習のすすめ</div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:16px;">口の形を目で確認することが上達の近道</p>
+        <div class="diagram-box">鏡で確認するポイント
+┌────────────────────┐
+│ ✓ 口は大きく開いてる？│
+│ ✓ 唇は動いてる？     │
+│ ✓ 舌が見える？(TH)   │
+│ ✓ 唇を丸めてる？(W)  │
+│ ✓ 口角は上がってる？ │
+└────────────────────┘</div>
+        <div class="mnemonic" style="margin-top:12px;"><strong>💡 実践アドバイス</strong>スマホで自分の口元を録画して確認するのが最も効果的！</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3: PRACTICE ===== -->
+<div id="section-practice" class="section">
+  <div class="container">
+    <div class="section-title">🏋️ 練習コーナー</div>
+    <p class="section-sub">舌を鍛えるトレーニング！声に出して練習しよう</p>
+
+    <div class="practice-tabs">
+      <div class="practice-tab active" onclick="showPractice('twisters', this)">👅 タングツイスター</div>
+      <div class="practice-tab" onclick="showPractice('pairs', this)">🔤 ミニマルペア</div>
+    </div>
+
+    <!-- TONGUE TWISTERS -->
+    <div id="practice-twisters" class="practice-content active">
+
+      <div class="callout callout-info" style="margin-bottom:24px;">
+        <span class="callout-icon">💡</span>
+        <div class="callout-text"><strong>練習方法</strong>①まずゆっくり正確に。②正確に言えたらスピードアップ。③10秒間止まらずに言えたら合格！</div>
+      </div>
+
+      <div class="twister-card" style="--border-color: #FF6B35;">
+        <div class="twister-en">Red lorry, yellow lorry.<br>Red lorry, yellow lorry.<br>Red lorry, yellow lorry.</div>
+        <div class="twister-jp">「赤いローリー、黄色いローリー」<br>L と R の連続練習。lorry（大型トラック）</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">L vs R</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+      <div class="twister-card" style="border-left-color: #9B5DE5;">
+        <div class="twister-en">The thirty-three thieves<br>thought that they thrilled<br>the throne throughout Thursday.</div>
+        <div class="twister-jp">「33人の泥棒たちは、木曜日じゅう、王座を熱狂させたと思った」<br>th音の集中トレーニング</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">TH音</span>
+          <span class="focus-tag">有声・無声</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+      <div class="twister-card" style="border-left-color: #F72585;">
+        <div class="twister-en">Whether the weather is cold,<br>or whether the weather is hot,<br>we'll weather the weather<br>whatever the weather, whether we like it or not.</div>
+        <div class="twister-jp">「天気が寒くても暑くても、好きでも嫌いでも、その天気に耐えます」<br>W音とTH音の複合練習</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">W音</span>
+          <span class="focus-tag">TH音</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+      <div class="twister-card" style="border-left-color: #4ECDC4;">
+        <div class="twister-en">She sells seashells<br>by the seashore.<br>The shells she sells<br>are seashells, I'm sure.</div>
+        <div class="twister-jp">「彼女は海岸で貝殻を売っている。売っている貝殻はきっと本物の貝殻」<br>si（/s/）と shi（/ʃ/）の区別</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">S vs SH</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+      <div class="twister-card" style="border-left-color: #06D6A0;">
+        <div class="twister-en">Peter Piper picked a peck<br>of pickled peppers.<br>A peck of pickled peppers<br>Peter Piper picked.</div>
+        <div class="twister-jp">「ピーター・パイパーは漬けたコショウを一山摘んだ」<br>P音の有気音練習。息を強く！</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">P有気音</span>
+          <span class="focus-tag">語末子音</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+      <div class="twister-card" style="border-left-color: #FFD93D;">
+        <div class="twister-en">How much wood would<br>a woodchuck chuck<br>if a woodchuck could chuck wood?</div>
+        <div class="twister-jp">「もしウッドチャックが木を投げられるなら、どれだけ投げられる？」<br>W音と語末子音の練習</div>
+        <div class="twister-focus">
+          <span>練習ポイント：</span>
+          <span class="focus-tag">W音</span>
+          <span class="focus-tag">語末子音</span>
+          <button class="speed-btn" onclick="speedChallenge(this)">⏱ スピードチャレンジ</button>
+        </div>
+      </div>
+
+    </div><!-- /twisters -->
+
+    <!-- MINIMAL PAIRS -->
+    <div id="practice-pairs" class="practice-content">
+
+      <div class="callout callout-success" style="margin-bottom:24px;">
+        <span class="callout-icon">🎯</span>
+        <div class="callout-text"><strong>ミニマルペアとは？</strong>1音だけ違う単語のペア。この違いを聞き分け・言い分けられると発音が劇的に向上します！</div>
+      </div>
+
+      <div class="pairs-grid">
+
+        <div class="pair-card">
+          <div class="pair-label">L vs R</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">light</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">right</span>
+          </div>
+          <div class="pair-phonetic">/laɪt/ vs /raɪt/</div>
+          <div class="pair-tip">L: 舌先を歯茎へ　R: 舌を宙に浮かせる</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">L vs R</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">rice</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">lice</span>
+          </div>
+          <div class="pair-phonetic">/raɪs/ vs /laɪs/</div>
+          <div class="pair-tip">「ライス（ご飯）」を「ライス（シラミ）」と言わないように！</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">V vs B</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">very</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">berry</span>
+          </div>
+          <div class="pair-phonetic">/veri/ vs /beri/</div>
+          <div class="pair-tip">V: 上歯を下唇に当てる　B: 唇を閉じてパッ</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">TH vs S/Z</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">think</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">sink</span>
+          </div>
+          <div class="pair-phonetic">/θɪŋk/ vs /sɪŋk/</div>
+          <div class="pair-tip">TH: 舌を歯の間に出す　S: 歯を近づけてスィー</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">TH vs D</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">this</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">dis</span>
+          </div>
+          <div class="pair-phonetic">/ðɪs/ vs /dɪs/</div>
+          <div class="pair-tip">有声TH: 舌を出してズー　D: 舌を歯茎に当てるだけ</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">Si vs Shi</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">see</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">she</span>
+          </div>
+          <div class="pair-phonetic">/siː/ vs /ʃiː/</div>
+          <div class="pair-tip">S: 口を横に引く　SH: 唇を少し前に突き出す</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">æ vs ʌ</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">bat</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">but</span>
+          </div>
+          <div class="pair-phonetic">/bæt/ vs /bʌt/</div>
+          <div class="pair-tip">æ: 口を横に広げて低く　ʌ: リラックスした「ア」</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">F vs P</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">fine</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">pine</span>
+          </div>
+          <div class="pair-phonetic">/faɪn/ vs /paɪn/</div>
+          <div class="pair-tip">F: 歯を下唇に当てて摩擦　P: 唇を閉じてパッ！</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">語末子音</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">cat</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">cab</span>
+          </div>
+          <div class="pair-phonetic">/kæt/ vs /kæb/</div>
+          <div class="pair-tip">語末のt/bは口の形だけ作って止める！</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">W vs V</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">wine</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">vine</span>
+          </div>
+          <div class="pair-phonetic">/waɪn/ vs /vaɪn/</div>
+          <div class="pair-tip">W: 唇を丸めてウ→ 動かす　V: 上歯を下唇に当てる</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">æ vs ɑ</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">bad</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">bod</span>
+          </div>
+          <div class="pair-phonetic">/bæd/ vs /bɑd/</div>
+          <div class="pair-tip">æ: 横に引いた「ア」　ɑ: 縦に開いた「アー」</div>
+        </div>
+
+        <div class="pair-card">
+          <div class="pair-label">N vs NG</div>
+          <div class="pair-words">
+            <span class="pair-word pair-word-a">thin</span>
+            <span class="pair-vs">vs</span>
+            <span class="pair-word pair-word-b">thing</span>
+          </div>
+          <div class="pair-phonetic">/θɪn/ vs /θɪŋ/</div>
+          <div class="pair-tip">ng: 「ン」ではなく鼻から「グ」の音。舌の奥が上顎に触れる</div>
+        </div>
+
+      </div>
+    </div><!-- /pairs -->
+
+  </div>
+</div>
+
+<!-- ===== SECTION 4: RHYTHM ===== -->
+<div id="section-rhythm" class="section">
+  <div class="container">
+    <div class="section-title">🎵 リズムとイントネーション</div>
+    <p class="section-sub">英語は「音楽」。リズムをつかむと劇的に自然になる！</p>
+
+    <div class="rhythm-card fade-in">
+      <div class="rhythm-title">🥁 英語は「強弱」のリズム言語</div>
+      <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:16px;">日本語は全部の音を均等に読む「モーラ言語」。英語は強い音と弱い音が交互に来る「ストレス言語」。</p>
+      <div class="rhythm-visual">
+        <div style="color:#FFD93D;font-size:0.8rem;margin-bottom:8px;">日本語 → 全部均等</div>
+        <div style="color:white;font-family:'Space Mono',monospace;font-size:0.85rem;margin-bottom:16px;">わ・た・し・は・が・く・せ・い・で・す（全部同じ強さ）</div>
+        <div style="color:#06D6A0;font-size:0.8rem;margin-bottom:8px;">英語 → 強弱がある</div>
+        <div style="font-size:0.9rem;margin-bottom:4px;">
+          <span style="background:#FF6B35;color:white;padding:3px 8px;border-radius:6px;font-family:'Space Mono',monospace;font-size:1rem;">I</span>
+          <span style="color:rgba(255,255,255,0.4);font-family:'Space Mono',monospace;"> am </span>
+          <span style="background:#FF6B35;color:white;padding:3px 8px;border-radius:6px;font-family:'Space Mono',monospace;font-size:1rem;">stu</span>
+          <span style="color:rgba(255,255,255,0.4);font-family:'Space Mono',monospace;">dent</span>
+        </div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;margin-top:8px;">← オレンジ = 強く　グレー = 弱く（速く）</div>
+      </div>
+    </div>
+
+    <div class="rhythm-card fade-in">
+      <div class="rhythm-title">📍 単語のアクセント（ストレス）</div>
+      <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:16px;">アクセントの位置が違うと全然聞き取ってもらえない！</p>
+      <div class="rhythm-visual">
+        <div style="color:#FFD93D;font-size:0.75rem;margin-bottom:12px;">大文字 = 強く長く / 小文字 = 弱く短く</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;line-height:2.5;color:white;">
+          <div><span style="background:#FF6B35;padding:2px 6px;border-radius:4px;">PHO</span><span style="opacity:0.4">-to</span>　　写真</div>
+          <div><span style="opacity:0.4">ba-</span><span style="background:#4ECDC4;padding:2px 6px;border-radius:4px;">NA</span><span style="opacity:0.4">-na</span>　バナナ</div>
+          <div><span style="opacity:0.4">com-</span><span style="background:#9B5DE5;padding:2px 6px;border-radius:4px;">PU</span><span style="opacity:0.4">-ter</span>　コンピュータ</div>
+          <div><span style="opacity:0.4">un-</span><span style="background:#F72585;padding:2px 6px;border-radius:4px;">DER</span><span style="opacity:0.4">-stand</span>　理解する</div>
+          <div><span style="background:#06D6A0;padding:2px 6px;border-radius:4px;">EN</span><span style="opacity:0.4">-glish</span>　英語</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rhythm-card fade-in">
+      <div class="rhythm-title">🎢 イントネーション（音の上がり下がり）</div>
+      <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:16px;">同じ言葉でも「上がるか下がるか」で意味が変わる！</p>
+
+      <div style="background:#0F172A;border-radius:16px;padding:24px;margin:16px 0;">
+
+        <div style="margin-bottom:24px;">
+          <div style="color:#FFD93D;font-size:0.75rem;margin-bottom:8px;">↘ 下降調 = 普通の文・断定</div>
+          <div style="position:relative;height:60px;margin-bottom:8px;">
+            <svg viewBox="0 0 300 60" style="width:100%;height:100%;">
+              <path d="M 20 15 Q 100 20 160 25 Q 220 30 280 50" stroke="#FF6B35" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="20" cy="15" r="5" fill="#FF6B35"/>
+              <circle cx="280" cy="50" r="5" fill="#FF6B35"/>
+            </svg>
+          </div>
+          <div style="font-family:'Space Mono',monospace;color:white;font-size:0.9rem;">"I like coffee." ↘</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;">"coffee" で音が下がる → 事実を伝えている</div>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <div style="color:#4ECDC4;font-size:0.75rem;margin-bottom:8px;">↗ 上昇調 = Yes/No質問・不確か</div>
+          <div style="position:relative;height:60px;margin-bottom:8px;">
+            <svg viewBox="0 0 300 60" style="width:100%;height:100%;">
+              <path d="M 20 45 Q 100 40 160 35 Q 220 25 280 10" stroke="#4ECDC4" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="20" cy="45" r="5" fill="#4ECDC4"/>
+              <circle cx="280" cy="10" r="5" fill="#4ECDC4"/>
+            </svg>
+          </div>
+          <div style="font-family:'Space Mono',monospace;color:white;font-size:0.9rem;">"Do you like coffee?" ↗</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;">最後で音が上がる → Yes/Noを求めている</div>
+        </div>
+
+        <div>
+          <div style="color:#9B5DE5;font-size:0.75rem;margin-bottom:8px;">↗↘ 上昇→下降 = 列挙・驚き</div>
+          <div style="font-family:'Space Mono',monospace;color:white;font-size:0.9rem;">"I want coffee ↗, tea ↗, and juice ↘."</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;">リストの途中は上がって、最後だけ下がる</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rhythm-card fade-in">
+      <div class="rhythm-title">⚡ 内容語 vs 機能語</div>
+      <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:16px;">全部の単語を同じ強さで読まないのが英語のコツ！</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#FFF3CD;border-radius:12px;padding:16px;">
+          <div style="font-weight:900;color:#92400E;margin-bottom:10px;">🔊 内容語（強く読む）</div>
+          <div style="font-size:0.82rem;color:#78350F;line-height:2;">
+            名詞（<strong>book, cat</strong>）<br>
+            動詞（<strong>run, think</strong>）<br>
+            形容詞（<strong>big, hot</strong>）<br>
+            副詞（<strong>very, fast</strong>）
+          </div>
+        </div>
+        <div style="background:#E0E7FF;border-radius:12px;padding:16px;">
+          <div style="font-weight:900;color:#3730A3;margin-bottom:10px;">🔇 機能語（弱く速く）</div>
+          <div style="font-size:0.82rem;color:#4338CA;line-height:2;">
+            冠詞（<strong>a, an, the</strong>）<br>
+            前置詞（<strong>in, on, at</strong>）<br>
+            接続詞（<strong>and, but</strong>）<br>
+            代名詞（<strong>I, you, he</strong>）
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-success" style="margin-top:16px;">
+        <span class="callout-icon">✅</span>
+        <div class="callout-text"><strong>例文で確認</strong>"I want to go to the store." → 強く読むのは "want", "go", "store" の3語だけ！</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SECTION 5: WORDS ===== -->
+<div id="section-words" class="section">
+  <div class="container">
+    <div class="section-title">📖 日本人がよく間違える単語</div>
+    <p class="section-sub">カタカナ発音に注意！これを知っておくだけで伝わり方が変わる</p>
+
+    <div class="callout callout-warn" style="margin-bottom:28px;">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-text"><strong>カタカナ発音の落とし穴</strong>日本語のカタカナ英語と実際の英語発音はかなり異なります。赤字の「間違い例」は意識して矯正しましょう。</div>
+    </div>
+
+    <div class="word-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>単語</th>
+            <th>正しい発音</th>
+            <th>❌ 日本人の間違い</th>
+            <th>カテゴリ</th>
+            <th>ポイント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="word-en">water</span></td>
+            <td><span class="phonetic">/wɔːtər/</span><br><small style="color:#065F46">「ウォーダー」</small></td>
+            <td><span class="wrong-example">「ウォーター」</span></td>
+            <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">W音</span></td>
+            <td style="font-size:0.78rem;">tは「ダ」に近い音。rでəに</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">burger</span></td>
+            <td><span class="phonetic">/bɜːrɡər/</span><br><small style="color:#065F46">「バーガー」</small></td>
+            <td><span class="wrong-example">「バーガー」</span></td>
+            <td><span class="category-chip" style="background:#DBEAFE;color:#1E40AF;">R音</span></td>
+            <td style="font-size:0.78rem;">urのRをしっかり発音</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">three</span></td>
+            <td><span class="phonetic">/θriː/</span><br><small style="color:#065F46">「スリー」より舌を出す</small></td>
+            <td><span class="wrong-example">「スリー」</span></td>
+            <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH音</span></td>
+            <td style="font-size:0.78rem;">舌を歯の間に！</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">rice</span></td>
+            <td><span class="phonetic">/raɪs/</span><br><small style="color:#065F46">Rをしっかり</small></td>
+            <td><span class="wrong-example">「ライス」(Lで発音)</span></td>
+            <td><span class="category-chip" style="background:#DBEAFE;color:#1E40AF;">R音</span></td>
+            <td style="font-size:0.78rem;">liceにならないよう注意！</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">very</span></td>
+            <td><span class="phonetic">/veri/</span><br><small style="color:#065F46">Vは歯を下唇に</small></td>
+            <td><span class="wrong-example">「ベリー」</span></td>
+            <td><span class="category-chip" style="background:#FCE7F3;color:#9D174D;">V音</span></td>
+            <td style="font-size:0.78rem;">Bではなく上歯を下唇に</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">world</span></td>
+            <td><span class="phonetic">/wɜːrld/</span><br><small style="color:#065F46">「ワールド」より口を丸める</small></td>
+            <td><span class="wrong-example">「ワールド」</span></td>
+            <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">W+R音</span></td>
+            <td style="font-size:0.78rem;">W→ɜːr→ldと3段階</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">comfortable</span></td>
+            <td><span class="phonetic">/kʌmftərbəl/</span><br><small style="color:#065F46">「カムフタブル」</small></td>
+            <td><span class="wrong-example">「コンフォータブル」</span></td>
+            <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">シュワー</span></td>
+            <td style="font-size:0.78rem;">弱音節が多い！</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">animal</span></td>
+            <td><span class="phonetic">/æniməl/</span><br><small style="color:#065F46">「ÆNイムル」</small></td>
+            <td><span class="wrong-example">「アニマル」</span></td>
+            <td><span class="category-chip" style="background:#FEF3C7;color:#92400E;">æ音</span></td>
+            <td style="font-size:0.78rem;">最初のaはæ（横広げ）</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">think</span></td>
+            <td><span class="phonetic">/θɪŋk/</span><br><small style="color:#065F46">舌を出してθ</small></td>
+            <td><span class="wrong-example">「スィンク」「ティンク」</span></td>
+            <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH音</span></td>
+            <td style="font-size:0.78rem;">舌先を歯に挟む</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">important</span></td>
+            <td><span class="phonetic">/ɪmpɔːrtənt/</span><br><small style="color:#065F46">「インポーdnt」</small></td>
+            <td><span class="wrong-example">「インポータント」</span></td>
+            <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">語末子音</span></td>
+            <td style="font-size:0.78rem;">語末のtはほぼ聞こえない</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">volleyball</span></td>
+            <td><span class="phonetic">/vɑliboːl/</span><br><small style="color:#065F46">Vで始める</small></td>
+            <td><span class="wrong-example">「バレーボール」</span></td>
+            <td><span class="category-chip" style="background:#FCE7F3;color:#9D174D;">V音</span></td>
+            <td style="font-size:0.78rem;">バでなく上歯を下唇に当てVから</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">clothes</span></td>
+            <td><span class="phonetic">/kloʊðz/</span><br><small style="color:#065F46">「クロウズ」</small></td>
+            <td><span class="wrong-example">「クローズィーズ」</span></td>
+            <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH+語末</span></td>
+            <td style="font-size:0.78rem;">close clothesでなく1音節</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">sheet</span></td>
+            <td><span class="phonetic">/ʃiːt/</span><br><small style="color:#065F46">唇を丸めてシー</small></td>
+            <td><span class="wrong-example">「シート」（アクセント違い）</span></td>
+            <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">SH音</span></td>
+            <td style="font-size:0.78rem;">seat（/s/）と混同しないよう注意</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">kitchen</span></td>
+            <td><span class="phonetic">/kɪtʃən/</span><br><small style="color:#065F46">「キッチン」シュワーで終わる</small></td>
+            <td><span class="wrong-example">「キッチーン」（en強調）</span></td>
+            <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">シュワー</span></td>
+            <td style="font-size:0.78rem;">enはシュワー（ə）</td>
+          </tr>
+          <tr>
+            <td><span class="word-en">can't</span></td>
+            <td><span class="phonetic">/kænt/</span><br><small style="color:#065F46">「キャーント」強めに</small></td>
+            <td><span class="wrong-example">「キャント」（can と区別しにくい）</span></td>
+            <td><span class="category-chip" style="background:#FEF3C7;color:#92400E;">æ音</span></td>
+            <td style="font-size:0.78rem;">canより長く伸ばす</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rhythm-card fade-in" style="background:white;">
+      <div class="rhythm-title">🏆 発音上達のロードマップ</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px;">
+        <div style="background:linear-gradient(135deg,#FFF3CD,#FFE08A);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:8px;">🌱</div>
+          <div style="font-family:'Fredoka One',cursive;color:#92400E;margin-bottom:6px;">Week 1-2</div>
+          <div style="font-size:0.78rem;color:#78350F;">L/R・V/B・THの<br>口の形を覚える</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#D1FAE5,#6EE7B7);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:8px;">🌿</div>
+          <div style="font-family:'Fredoka One',cursive;color:#065F46;margin-bottom:6px;">Week 3-4</div>
+          <div style="font-size:0.78rem;color:#064E3B;">語末子音・短母音を<br>毎日練習</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#DBEAFE,#93C5FD);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:8px;">🌳</div>
+          <div style="font-family:'Fredoka One',cursive;color:#1E40AF;margin-bottom:6px;">Month 2</div>
+          <div style="font-size:0.78rem;color:#1E3A8A;">リズム・ストレス・<br>シュワーをマスター</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#EDE9FE,#C4B5FD);border-radius:12px;padding:16px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:8px;">🏆</div>
+          <div style="font-family:'Fredoka One',cursive;color:#5B21B6;margin-bottom:6px;">Month 3+</div>
+          <div style="font-size:0.78rem;color:#4C1D95;">シャドーイングで<br>総合的に強化</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+  // Section navigation
+  function showSection(id, tab) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('section-' + id).classList.add('active');
+    tab.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Practice tabs
+  function showPractice(id, tab) {
+    document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.practice-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('practice-' + id).classList.add('active');
+    tab.classList.add('active');
+  }
+
+  // Card toggle
+  function toggleCard(card) {
+    const content = card.querySelector('.card-toggle-content');
+    const btn = card.querySelector('.expand-btn');
+    if (!content) return;
+    card.classList.toggle('expanded');
+    if (card.classList.contains('expanded')) {
+      content.style.display = 'block';
+      btn.textContent = '▲ 閉じる';
+    } else {
+      content.style.display = 'none';
+      btn.textContent = '▼ 詳しく見る';
+    }
+  }
+
+  // Speed challenge
+  let timers = {};
+  function speedChallenge(btn) {
+    const card = btn.closest('.twister-card');
+    const id = card.dataset.timerId || Math.random().toString(36).slice(2);
+    card.dataset.timerId = id;
+
+    if (timers[id]) {
+      clearInterval(timers[id]);
+      delete timers[id];
+      btn.textContent = '⏱ スピードチャレンジ';
+      btn.style.background = '';
+      return;
+    }
+
+    let count = 10;
+    btn.textContent = `⏹ ${count}秒`;
+    btn.style.background = '#EF233C';
+
+    timers[id] = setInterval(() => {
+      count--;
+      if (count <= 0) {
+        clearInterval(timers[id]);
+        delete timers[id];
+        btn.textContent = '🎉 クリア！';
+        btn.style.background = '#06D6A0';
+        setTimeout(() => {
+          btn.textContent = '⏱ スピードチャレンジ';
+          btn.style.background = '';
+        }, 2000);
+      } else {
+        btn.textContent = `⏹ ${count}秒`;
+      }
+    }, 1000);
+  }
+
+  // Scroll to top visibility
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.style.animationPlayState = 'running';
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
