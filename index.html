@@ -741,6 +741,104 @@
     .callout-text { font-size: 0.85rem; line-height: 1.7; }
     .callout-text strong { display: block; margin-bottom: 4px; font-size: 0.9rem; }
 
+    /* ===== AUDIO BUTTON ===== */
+    .audio-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--secondary);
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    .audio-btn:hover { background: #3AB5AC; transform: scale(1.15); }
+    .audio-btn.playing {
+      background: var(--primary);
+      animation: pulse 0.6s ease infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to   { transform: scale(1.2); }
+    }
+    .audio-btn-slow {
+      background: var(--purple);
+      width: 28px; height: 28px; font-size: 12px;
+    }
+    .audio-btn-slow:hover { background: #7A3DB5; }
+
+    /* Beginner practice */
+    .beginner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .sound-tile {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .sound-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--secondary); }
+    .sound-tile:active { transform: scale(0.96); }
+    .sound-tile .tile-word {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .sound-tile .tile-jp {
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+    .sound-tile .tile-icon { font-size: 1.5rem; margin-bottom: 6px; display: block; }
+
+    .phrase-card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+    .phrase-card:hover { transform: translateX(6px); }
+    .phrase-en {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      flex: 1;
+    }
+    .phrase-jp { font-size: 0.8rem; color: var(--text-light); }
+
+    .level-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+    .level-1 { background: #D1FAE5; color: #065F46; }
+    .level-2 { background: #FEF3C7; color: #92400E; }
+    .level-3 { background: #FEE2E2; color: #991B1B; }
+
     /* ===== SCROLL TO TOP ===== */
     .scroll-top {
       position: fixed;
@@ -1406,12 +1504,319 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
     <p class="section-sub">舌を鍛えるトレーニング！声に出して練習しよう</p>
 
     <div class="practice-tabs">
-      <div class="practice-tab active" onclick="showPractice('twisters', this)">👅 タングツイスター</div>
+      <div class="practice-tab active" onclick="showPractice('beginner', this)">🌱 初級練習</div>
+      <div class="practice-tab" onclick="showPractice('twisters', this)">👅 タングツイスター</div>
       <div class="practice-tab" onclick="showPractice('pairs', this)">🔤 ミニマルペア</div>
     </div>
 
+    <!-- BEGINNER PRACTICE -->
+    <div id="practice-beginner" class="practice-content active">
+
+      <div class="callout callout-success" style="margin-bottom:24px;">
+        <span class="callout-icon">🌱</span>
+        <div class="callout-text"><strong>初級練習の使い方</strong>🔊ボタンを押してネイティブの発音を聞き、声に出して真似しよう！まずは1音から丁寧に練習しましょう。</div>
+      </div>
+
+      <!-- STEP 1: 単音ウォームアップ -->
+      <h3 style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--dark);margin-bottom:6px;">
+        STEP 1 — 単音ウォームアップ <span class="level-badge level-1">初級</span>
+      </h3>
+      <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px;">タイルをタップして音を聞き、真似して発音しよう</p>
+
+      <div style="margin-bottom:8px;font-size:0.8rem;font-weight:700;color:var(--primary);">🔴 L の音</div>
+      <div class="beginner-grid" style="margin-bottom:20px;">
+        <div class="sound-tile" onclick="speak('la',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">la</span><span class="tile-jp">ラ（L）</span></div>
+        <div class="sound-tile" onclick="speak('lee',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">lee</span><span class="tile-jp">リ（L）</span></div>
+        <div class="sound-tile" onclick="speak('low',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">low</span><span class="tile-jp">ロ（L）</span></div>
+        <div class="sound-tile" onclick="speak('love',0.7,this)"><span class="tile-icon">💛</span><span class="tile-word">love</span><span class="tile-jp">愛</span></div>
+        <div class="sound-tile" onclick="speak('like',0.7,this)"><span class="tile-icon">👍</span><span class="tile-word">like</span><span class="tile-jp">好き</span></div>
+        <div class="sound-tile" onclick="speak('left',0.7,this)"><span class="tile-icon">⬅️</span><span class="tile-word">left</span><span class="tile-jp">左</span></div>
+      </div>
+
+      <div style="margin-bottom:8px;font-size:0.8rem;font-weight:700;color:var(--blue);">🔵 R の音</div>
+      <div class="beginner-grid" style="margin-bottom:20px;">
+        <div class="sound-tile" onclick="speak('ra',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">ra</span><span class="tile-jp">ラ（R）</span></div>
+        <div class="sound-tile" onclick="speak('ree',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">ree</span><span class="tile-jp">リ（R）</span></div>
+        <div class="sound-tile" onclick="speak('row',0.7,this)"><span class="tile-icon">👅</span><span class="tile-word">row</span><span class="tile-jp">ロ（R）</span></div>
+        <div class="sound-tile" onclick="speak('right',0.7,this)"><span class="tile-icon">✅</span><span class="tile-word">right</span><span class="tile-jp">正しい</span></div>
+        <div class="sound-tile" onclick="speak('run',0.7,this)"><span class="tile-icon">🏃</span><span class="tile-word">run</span><span class="tile-jp">走る</span></div>
+        <div class="sound-tile" onclick="speak('read',0.7,this)"><span class="tile-icon">📖</span><span class="tile-word">read</span><span class="tile-jp">読む</span></div>
+      </div>
+
+      <div style="margin-bottom:8px;font-size:0.8rem;font-weight:700;color:var(--purple);">🟣 TH の音</div>
+      <div class="beginner-grid" style="margin-bottom:20px;">
+        <div class="sound-tile" onclick="speak('the',0.7,this)"><span class="tile-icon">📌</span><span class="tile-word">the</span><span class="tile-jp">その（有声）</span></div>
+        <div class="sound-tile" onclick="speak('this',0.7,this)"><span class="tile-icon">👆</span><span class="tile-word">this</span><span class="tile-jp">これ</span></div>
+        <div class="sound-tile" onclick="speak('that',0.7,this)"><span class="tile-icon">👉</span><span class="tile-word">that</span><span class="tile-jp">あれ</span></div>
+        <div class="sound-tile" onclick="speak('think',0.7,this)"><span class="tile-icon">💭</span><span class="tile-word">think</span><span class="tile-jp">思う（無声）</span></div>
+        <div class="sound-tile" onclick="speak('thank',0.7,this)"><span class="tile-icon">🙏</span><span class="tile-word">thank</span><span class="tile-jp">感謝</span></div>
+        <div class="sound-tile" onclick="speak('three',0.7,this)"><span class="tile-icon">3️⃣</span><span class="tile-word">three</span><span class="tile-jp">三</span></div>
+      </div>
+
+      <div style="margin-bottom:8px;font-size:0.8rem;font-weight:700;color:var(--pink);">🩷 V の音</div>
+      <div class="beginner-grid" style="margin-bottom:28px;">
+        <div class="sound-tile" onclick="speak('very',0.7,this)"><span class="tile-icon">💯</span><span class="tile-word">very</span><span class="tile-jp">とても</span></div>
+        <div class="sound-tile" onclick="speak('voice',0.7,this)"><span class="tile-icon">🎤</span><span class="tile-word">voice</span><span class="tile-jp">声</span></div>
+        <div class="sound-tile" onclick="speak('visit',0.7,this)"><span class="tile-icon">🏠</span><span class="tile-word">visit</span><span class="tile-jp">訪問</span></div>
+        <div class="sound-tile" onclick="speak('video',0.7,this)"><span class="tile-icon">🎬</span><span class="tile-word">video</span><span class="tile-jp">動画</span></div>
+        <div class="sound-tile" onclick="speak('vegetable',0.7,this)"><span class="tile-icon">🥦</span><span class="tile-word">veggie</span><span class="tile-jp">野菜</span></div>
+        <div class="sound-tile" onclick="speak('violin',0.7,this)"><span class="tile-icon">🎻</span><span class="tile-word">violin</span><span class="tile-jp">バイオリン</span></div>
+      </div>
+
+      <!-- STEP 2: 簡単な単語 -->
+      <h3 style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--dark);margin-bottom:6px;">
+        STEP 2 — 簡単な単語練習 <span class="level-badge level-1">初級</span>
+      </h3>
+      <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px;">🔊で聞いてから、ゆっくりボタン🐢でもう一度確認しよう</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:28px;">
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">💧</span>
+            <span class="phrase-en" style="font-size:1.1rem;">water</span>
+            <button class="audio-btn" onclick="speak('water',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('water',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">水</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 「ウォーダー」に近い音</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">🍎</span>
+            <span class="phrase-en" style="font-size:1.1rem;">apple</span>
+            <button class="audio-btn" onclick="speak('apple',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('apple',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">りんご</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 æ音：口を横に引いて「アップル」</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">3️⃣</span>
+            <span class="phrase-en" style="font-size:1.1rem;">three</span>
+            <button class="audio-btn" onclick="speak('three',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('three',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">三</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 TH：舌を歯の間に出して「スリー」</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">✅</span>
+            <span class="phrase-en" style="font-size:1.1rem;">right</span>
+            <button class="audio-btn" onclick="speak('right',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('right',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">右・正しい</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 R：舌を浮かせてカール</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">💡</span>
+            <span class="phrase-en" style="font-size:1.1rem;">light</span>
+            <button class="audio-btn" onclick="speak('light',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('light',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">光・軽い</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 L：舌先を歯茎にタッチ</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">💯</span>
+            <span class="phrase-en" style="font-size:1.1rem;">very</span>
+            <button class="audio-btn" onclick="speak('very',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('very',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">とても</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 V：「ベリー」でなく上歯を下唇に</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">💭</span>
+            <span class="phrase-en" style="font-size:1.1rem;">think</span>
+            <button class="audio-btn" onclick="speak('think',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('think',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">思う</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 TH無声：「スィンク」でなく舌を出す</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">🌍</span>
+            <span class="phrase-en" style="font-size:1.1rem;">world</span>
+            <button class="audio-btn" onclick="speak('world',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('world',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">世界</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 W+R：唇を丸めてスタート</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">❤️</span>
+            <span class="phrase-en" style="font-size:1.1rem;">love</span>
+            <button class="audio-btn" onclick="speak('love',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('love',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">愛</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 L：舌先を歯茎に当ててスタート</div>
+        </div>
+
+        <div class="phrase-card" style="flex-direction:column;align-items:flex-start;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <span style="font-size:1.4rem;">🍚</span>
+            <span class="phrase-en" style="font-size:1.1rem;">rice</span>
+            <button class="audio-btn" onclick="speak('rice',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('rice',this)">🐢</button>
+            <span style="font-size:0.75rem;color:var(--text-light);margin-left:auto;">ご飯</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--primary);padding-left:36px;">💡 R：「ライス」でなく舌を後ろに引く</div>
+        </div>
+
+      </div>
+
+      <!-- STEP 3: ミニフレーズ -->
+      <h3 style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--dark);margin-bottom:6px;">
+        STEP 3 — ミニフレーズ練習 <span class="level-badge level-2">初中級</span>
+      </h3>
+      <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px;">短いフレーズでリズムと発音を一緒に練習しよう</p>
+
+      <div style="margin-bottom:28px;">
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">Thank you very much.</div>
+            <div class="phrase-jp">ありがとうございます</div>
+            <div style="margin-top:6px;"><span class="focus-tag">TH + V</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('Thank you very much.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Thank you very much.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">I like rice.</div>
+            <div class="phrase-jp">ご飯が好きです</div>
+            <div style="margin-top:6px;"><span class="focus-tag">L と R の区別</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('I like rice.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('I like rice.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">This is right.</div>
+            <div class="phrase-jp">これは正しいです</div>
+            <div style="margin-top:6px;"><span class="focus-tag">TH + R</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('This is right.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('This is right.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">Can I have water?</div>
+            <div class="phrase-jp">お水もらえますか</div>
+            <div style="margin-top:6px;"><span class="focus-tag">W + 語末子音</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('Can I have water?',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Can I have water?',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">Three red roses.</div>
+            <div class="phrase-jp">三本の赤いバラ</div>
+            <div style="margin-top:6px;"><span class="focus-tag">TH + R</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('Three red roses.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Three red roses.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">Very good!</div>
+            <div class="phrase-jp">とても良い！</div>
+            <div style="margin-top:6px;"><span class="focus-tag">V音スタート</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('Very good!',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Very good!',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">I think so.</div>
+            <div class="phrase-jp">そう思います</div>
+            <div style="margin-top:6px;"><span class="focus-tag">TH無声音</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('I think so.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('I think so.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">Left or right?</div>
+            <div class="phrase-jp">左か右か？</div>
+            <div style="margin-top:6px;"><span class="focus-tag">L vs R</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('Left or right?',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Left or right?',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">The weather is nice.</div>
+            <div class="phrase-jp">天気が良いですね</div>
+            <div style="margin-top:6px;"><span class="focus-tag">TH有声 + W</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('The weather is nice.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('The weather is nice.',this)">🐢</button>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div style="flex:1;">
+            <div class="phrase-en">She sells seashells.</div>
+            <div class="phrase-jp">彼女は貝殻を売る</div>
+            <div style="margin-top:6px;"><span class="focus-tag">S vs SH</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="audio-btn" onclick="speak('She sells seashells.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('She sells seashells.',this)">🐢</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /beginner -->
+
     <!-- TONGUE TWISTERS -->
-    <div id="practice-twisters" class="practice-content active">
+    <div id="practice-twisters" class="practice-content">
 
       <div class="callout callout-info" style="margin-bottom:24px;">
         <span class="callout-icon">💡</span>
@@ -1419,7 +1824,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="--border-color: #FF6B35;">
-        <div class="twister-en">Red lorry, yellow lorry.<br>Red lorry, yellow lorry.<br>Red lorry, yellow lorry.</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">Red lorry, yellow lorry.<br>Red lorry, yellow lorry.<br>Red lorry, yellow lorry.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('Red lorry, yellow lorry. Red lorry, yellow lorry. Red lorry, yellow lorry.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Red lorry, yellow lorry.',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「赤いローリー、黄色いローリー」<br>L と R の連続練習。lorry（大型トラック）</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1429,7 +1840,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="border-left-color: #9B5DE5;">
-        <div class="twister-en">The thirty-three thieves<br>thought that they thrilled<br>the throne throughout Thursday.</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">The thirty-three thieves<br>thought that they thrilled<br>the throne throughout Thursday.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('The thirty-three thieves thought that they thrilled the throne throughout Thursday.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('The thirty-three thieves thought that they thrilled the throne throughout Thursday.',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「33人の泥棒たちは、木曜日じゅう、王座を熱狂させたと思った」<br>th音の集中トレーニング</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1440,7 +1857,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="border-left-color: #F72585;">
-        <div class="twister-en">Whether the weather is cold,<br>or whether the weather is hot,<br>we'll weather the weather<br>whatever the weather, whether we like it or not.</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">Whether the weather is cold,<br>or whether the weather is hot,<br>we'll weather the weather<br>whatever the weather, whether we like it or not.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('Whether the weather is cold, or whether the weather is hot, we will weather the weather whatever the weather, whether we like it or not.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Whether the weather is cold, or whether the weather is hot.',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「天気が寒くても暑くても、好きでも嫌いでも、その天気に耐えます」<br>W音とTH音の複合練習</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1451,7 +1874,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="border-left-color: #4ECDC4;">
-        <div class="twister-en">She sells seashells<br>by the seashore.<br>The shells she sells<br>are seashells, I'm sure.</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">She sells seashells<br>by the seashore.<br>The shells she sells<br>are seashells, I'm sure.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('She sells seashells by the seashore. The shells she sells are seashells, I am sure.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('She sells seashells by the seashore.',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「彼女は海岸で貝殻を売っている。売っている貝殻はきっと本物の貝殻」<br>si（/s/）と shi（/ʃ/）の区別</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1461,7 +1890,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="border-left-color: #06D6A0;">
-        <div class="twister-en">Peter Piper picked a peck<br>of pickled peppers.<br>A peck of pickled peppers<br>Peter Piper picked.</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">Peter Piper picked a peck<br>of pickled peppers.<br>A peck of pickled peppers<br>Peter Piper picked.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('Peter Piper picked a peck of pickled peppers. A peck of pickled peppers Peter Piper picked.',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('Peter Piper picked a peck of pickled peppers.',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「ピーター・パイパーは漬けたコショウを一山摘んだ」<br>P音の有気音練習。息を強く！</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1472,7 +1907,13 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
       </div>
 
       <div class="twister-card" style="border-left-color: #FFD93D;">
-        <div class="twister-en">How much wood would<br>a woodchuck chuck<br>if a woodchuck could chuck wood?</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div class="twister-en">How much wood would<br>a woodchuck chuck<br>if a woodchuck could chuck wood?</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+            <button class="audio-btn" onclick="speak('How much wood would a woodchuck chuck if a woodchuck could chuck wood?',0.85,this)">🔊</button>
+            <button class="audio-btn audio-btn-slow" onclick="speakSlow('How much wood would a woodchuck chuck if a woodchuck could chuck wood?',this)">🐢</button>
+          </div>
+        </div>
         <div class="twister-jp">「もしウッドチャックが木を投げられるなら、どれだけ投げられる？」<br>W音と語末子音の練習</div>
         <div class="twister-focus">
           <span>練習ポイント：</span>
@@ -1498,8 +1939,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">L vs R</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">light</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('light',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">right</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('right',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/laɪt/ vs /raɪt/</div>
           <div class="pair-tip">L: 舌先を歯茎へ　R: 舌を宙に浮かせる</div>
@@ -1509,8 +1952,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">L vs R</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">rice</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('rice',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">lice</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('lice',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/raɪs/ vs /laɪs/</div>
           <div class="pair-tip">「ライス（ご飯）」を「ライス（シラミ）」と言わないように！</div>
@@ -1520,8 +1965,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">V vs B</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">very</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('very',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">berry</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('berry',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/veri/ vs /beri/</div>
           <div class="pair-tip">V: 上歯を下唇に当てる　B: 唇を閉じてパッ</div>
@@ -1531,8 +1978,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">TH vs S/Z</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">think</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('think',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">sink</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('sink',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/θɪŋk/ vs /sɪŋk/</div>
           <div class="pair-tip">TH: 舌を歯の間に出す　S: 歯を近づけてスィー</div>
@@ -1542,8 +1991,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">TH vs D</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">this</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('this',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">dis</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('dis',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/ðɪs/ vs /dɪs/</div>
           <div class="pair-tip">有声TH: 舌を出してズー　D: 舌を歯茎に当てるだけ</div>
@@ -1553,8 +2004,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">Si vs Shi</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">see</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('see',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">she</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('she',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/siː/ vs /ʃiː/</div>
           <div class="pair-tip">S: 口を横に引く　SH: 唇を少し前に突き出す</div>
@@ -1564,8 +2017,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">æ vs ʌ</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">bat</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('bat',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">but</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('but',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/bæt/ vs /bʌt/</div>
           <div class="pair-tip">æ: 口を横に広げて低く　ʌ: リラックスした「ア」</div>
@@ -1575,8 +2030,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">F vs P</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">fine</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('fine',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">pine</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('pine',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/faɪn/ vs /paɪn/</div>
           <div class="pair-tip">F: 歯を下唇に当てて摩擦　P: 唇を閉じてパッ！</div>
@@ -1586,8 +2043,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">語末子音</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">cat</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('cat',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">cab</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('cab',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/kæt/ vs /kæb/</div>
           <div class="pair-tip">語末のt/bは口の形だけ作って止める！</div>
@@ -1597,8 +2056,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">W vs V</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">wine</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('wine',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">vine</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('vine',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/waɪn/ vs /vaɪn/</div>
           <div class="pair-tip">W: 唇を丸めてウ→ 動かす　V: 上歯を下唇に当てる</div>
@@ -1608,8 +2069,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">æ vs ɑ</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">bad</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('bad',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">bod</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('bod',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/bæd/ vs /bɑd/</div>
           <div class="pair-tip">æ: 横に引いた「ア」　ɑ: 縦に開いた「アー」</div>
@@ -1619,8 +2082,10 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
           <div class="pair-label">N vs NG</div>
           <div class="pair-words">
             <span class="pair-word pair-word-a">thin</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('thin',0.8,this)">🔊</button>
             <span class="pair-vs">vs</span>
             <span class="pair-word pair-word-b">thing</span>
+            <button class="audio-btn" style="width:26px;height:26px;font-size:12px;" onclick="speak('thing',0.8,this)">🔊</button>
           </div>
           <div class="pair-phonetic">/θɪn/ vs /θɪŋ/</div>
           <div class="pair-tip">ng: 「ン」ではなく鼻から「グ」の音。舌の奥が上顎に触れる</div>
@@ -1767,105 +2232,105 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
         </thead>
         <tbody>
           <tr>
-            <td><span class="word-en">water</span></td>
+            <td><span class="word-en">water</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('water',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/wɔːtər/</span><br><small style="color:#065F46">「ウォーダー」</small></td>
             <td><span class="wrong-example">「ウォーター」</span></td>
             <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">W音</span></td>
             <td style="font-size:0.78rem;">tは「ダ」に近い音。rでəに</td>
           </tr>
           <tr>
-            <td><span class="word-en">burger</span></td>
+            <td><span class="word-en">burger</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('burger',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/bɜːrɡər/</span><br><small style="color:#065F46">「バーガー」</small></td>
             <td><span class="wrong-example">「バーガー」</span></td>
             <td><span class="category-chip" style="background:#DBEAFE;color:#1E40AF;">R音</span></td>
             <td style="font-size:0.78rem;">urのRをしっかり発音</td>
           </tr>
           <tr>
-            <td><span class="word-en">three</span></td>
+            <td><span class="word-en">three</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('three',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/θriː/</span><br><small style="color:#065F46">「スリー」より舌を出す</small></td>
             <td><span class="wrong-example">「スリー」</span></td>
             <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH音</span></td>
             <td style="font-size:0.78rem;">舌を歯の間に！</td>
           </tr>
           <tr>
-            <td><span class="word-en">rice</span></td>
+            <td><span class="word-en">rice</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('rice',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/raɪs/</span><br><small style="color:#065F46">Rをしっかり</small></td>
             <td><span class="wrong-example">「ライス」(Lで発音)</span></td>
             <td><span class="category-chip" style="background:#DBEAFE;color:#1E40AF;">R音</span></td>
             <td style="font-size:0.78rem;">liceにならないよう注意！</td>
           </tr>
           <tr>
-            <td><span class="word-en">very</span></td>
+            <td><span class="word-en">very</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('very',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/veri/</span><br><small style="color:#065F46">Vは歯を下唇に</small></td>
             <td><span class="wrong-example">「ベリー」</span></td>
             <td><span class="category-chip" style="background:#FCE7F3;color:#9D174D;">V音</span></td>
             <td style="font-size:0.78rem;">Bではなく上歯を下唇に</td>
           </tr>
           <tr>
-            <td><span class="word-en">world</span></td>
+            <td><span class="word-en">world</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('world',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/wɜːrld/</span><br><small style="color:#065F46">「ワールド」より口を丸める</small></td>
             <td><span class="wrong-example">「ワールド」</span></td>
             <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">W+R音</span></td>
             <td style="font-size:0.78rem;">W→ɜːr→ldと3段階</td>
           </tr>
           <tr>
-            <td><span class="word-en">comfortable</span></td>
+            <td><span class="word-en">comfortable</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('comfortable',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/kʌmftərbəl/</span><br><small style="color:#065F46">「カムフタブル」</small></td>
             <td><span class="wrong-example">「コンフォータブル」</span></td>
             <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">シュワー</span></td>
             <td style="font-size:0.78rem;">弱音節が多い！</td>
           </tr>
           <tr>
-            <td><span class="word-en">animal</span></td>
+            <td><span class="word-en">animal</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('animal',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/æniməl/</span><br><small style="color:#065F46">「ÆNイムル」</small></td>
             <td><span class="wrong-example">「アニマル」</span></td>
             <td><span class="category-chip" style="background:#FEF3C7;color:#92400E;">æ音</span></td>
             <td style="font-size:0.78rem;">最初のaはæ（横広げ）</td>
           </tr>
           <tr>
-            <td><span class="word-en">think</span></td>
+            <td><span class="word-en">think</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('think',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/θɪŋk/</span><br><small style="color:#065F46">舌を出してθ</small></td>
             <td><span class="wrong-example">「スィンク」「ティンク」</span></td>
             <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH音</span></td>
             <td style="font-size:0.78rem;">舌先を歯に挟む</td>
           </tr>
           <tr>
-            <td><span class="word-en">important</span></td>
+            <td><span class="word-en">important</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('important',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/ɪmpɔːrtənt/</span><br><small style="color:#065F46">「インポーdnt」</small></td>
             <td><span class="wrong-example">「インポータント」</span></td>
             <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">語末子音</span></td>
             <td style="font-size:0.78rem;">語末のtはほぼ聞こえない</td>
           </tr>
           <tr>
-            <td><span class="word-en">volleyball</span></td>
+            <td><span class="word-en">volleyball</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('volleyball',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/vɑliboːl/</span><br><small style="color:#065F46">Vで始める</small></td>
             <td><span class="wrong-example">「バレーボール」</span></td>
             <td><span class="category-chip" style="background:#FCE7F3;color:#9D174D;">V音</span></td>
             <td style="font-size:0.78rem;">バでなく上歯を下唇に当てVから</td>
           </tr>
           <tr>
-            <td><span class="word-en">clothes</span></td>
+            <td><span class="word-en">clothes</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('clothes',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/kloʊðz/</span><br><small style="color:#065F46">「クロウズ」</small></td>
             <td><span class="wrong-example">「クローズィーズ」</span></td>
             <td><span class="category-chip" style="background:#EDE9FE;color:#5B21B6;">TH+語末</span></td>
             <td style="font-size:0.78rem;">close clothesでなく1音節</td>
           </tr>
           <tr>
-            <td><span class="word-en">sheet</span></td>
+            <td><span class="word-en">sheet</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('sheet',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/ʃiːt/</span><br><small style="color:#065F46">唇を丸めてシー</small></td>
             <td><span class="wrong-example">「シート」（アクセント違い）</span></td>
             <td><span class="category-chip" style="background:#FEE2E2;color:#991B1B;">SH音</span></td>
             <td style="font-size:0.78rem;">seat（/s/）と混同しないよう注意</td>
           </tr>
           <tr>
-            <td><span class="word-en">kitchen</span></td>
+            <td><span class="word-en">kitchen</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak('kitchen',0.8,this)">🔊</button></td>
             <td><span class="phonetic">/kɪtʃən/</span><br><small style="color:#065F46">「キッチン」シュワーで終わる</small></td>
             <td><span class="wrong-example">「キッチーン」（en強調）</span></td>
             <td><span class="category-chip" style="background:#D1FAE5;color:#065F46;">シュワー</span></td>
             <td style="font-size:0.78rem;">enはシュワー（ə）</td>
           </tr>
           <tr>
-            <td><span class="word-en">can't</span></td>
+            <td><span class="word-en">can't</span> <button class="audio-btn" style="width:24px;height:24px;font-size:11px;" onclick="speak(`can't`,0.8,this)">🔊</button></td>
             <td><span class="phonetic">/kænt/</span><br><small style="color:#065F46">「キャーント」強めに</small></td>
             <td><span class="wrong-example">「キャント」（can と区別しにくい）</span></td>
             <td><span class="category-chip" style="background:#FEF3C7;color:#92400E;">æ音</span></td>
@@ -1908,7 +2373,35 @@ cot /ɑ/ ← 口を縦に大きく開けて「ア」
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
-  // Section navigation
+  // ===== SPEECH SYNTHESIS =====
+  let voices = [];
+  function loadVoices() {
+    voices = speechSynthesis.getVoices();
+  }
+  speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+
+  function speak(text, rate = 0.85, btn) {
+    speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'en-US';
+    utt.rate = rate;
+    utt.pitch = 1;
+    const usVoice = voices.find(v => v.lang === 'en-US' && !v.name.includes('Compact'))
+                 || voices.find(v => v.lang.startsWith('en'));
+    if (usVoice) utt.voice = usVoice;
+
+    if (btn) {
+      btn.classList.add('playing');
+      utt.onend = () => btn.classList.remove('playing');
+      utt.onerror = () => btn.classList.remove('playing');
+    }
+    speechSynthesis.speak(utt);
+  }
+
+  function speakSlow(text, btn) { speak(text, 0.5, btn); }
+
+  // ===== Section navigation
   function showSection(id, tab) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
